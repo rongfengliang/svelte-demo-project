@@ -5,3 +5,24 @@
 		color: purple;
 	}
 </style>
+
+
+{#await promise}
+	<p>wait for it...</p>
+{:then answer}
+	<p>the answer is {answer}!</p>
+{:catch error}
+	<p>well that's odd</p>
+{/await}
+
+<script>
+	export default {
+		data() {
+			return {
+				promise: new Promise(fulfil => {
+					setTimeout(() => fulfil(42), 3000);
+				})
+			};
+		}
+	};
+</script>
